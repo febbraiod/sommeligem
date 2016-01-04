@@ -17,7 +17,15 @@ class Wine
 
     html = Nokogiri::HTML(open(wine_url))
     doc = html.css(".detailsBlock")
-    binding.pry
+    
+    names = doc.css(".listProductName")
+
+    names.each do |i|
+     i.attribute("href").value
+     i.text
+     binding.pry
+
+    end
 
 
 
@@ -33,4 +41,13 @@ Wine.new.scrape
   :details => {:price => $5, :rating => 80, :vinatage => 2014}},{}]
 =end
 
-#names = doc.css(".listProductName")
+#ranks = having trouble with this, however I might not need to scapre this.  it's really just 1-100 based on the "name"
+#names = doc.css(".listProductName")   #text   #pull this into an array and rank based on order.
+#varietals = doc.css(".productAbstract").css("[href]")  #text
+#description => link
+#description = doc.css(".listProductName").attribute("href").value
+
+
+
+
+
