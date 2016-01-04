@@ -5,20 +5,21 @@ require 'open-uri'
 
 class Wine
 
-  WINE_URL = "http://2015.top100.winespectator.com/lists/"
+  WINE_URL = "http://www.wine.com/v6/winemarketinglist.aspx?N=490%201251&pagelength=100&s=100&cid=100"
 
   attr_accessor :wine_url
 
-  def initialize(wine_url = WINE_URL) #not sure if this is the correct thing to do, but I want to preserve the option of changing the year by changing the 2015 in the URL.
+  def initialize(wine_rul = WINE_URL)
     @wine_url = WINE_URL
   end
 
   def scrape
 
     html = Nokogiri::HTML(open(wine_url))
+    doc = html.css(".detailsBlock")
     binding.pry
 
-    
+
 
   end
 
@@ -26,3 +27,10 @@ class Wine
 end
 
 Wine.new.scrape
+
+=begin
+[{:rank => 2, :name => "Black Box", :varietal => "Red Blend" 
+  :details => {:price => $5, :rating => 80, :vinatage => 2014}},{}]
+=end
+
+#names = doc.css(".listProductName")
