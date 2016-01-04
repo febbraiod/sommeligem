@@ -1,10 +1,10 @@
 require "sommeligem/version"
 require 'pry'
-require 'Nokogiri'
+require 'nokogiri'
 require 'open-uri'
 
-require 'sommeligem/som_cli'
-require 'sommeligem/wine_scraper'
+require 'sommeligem/som_cli.rb'
+require 'sommeligem/wine_scraper.rb'
 
 module Sommeligem
 end

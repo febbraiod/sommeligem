@@ -1,7 +1,9 @@
-require_relative '../sommeligem.rb'
+require 'pry'
+require 'nokogiri'
+require 'open-uri'
+
 
 class Wine
-  include Sommeligem
 
   WINE_URL = "http://2015.top100.winespectator.com/lists/"
 
@@ -11,5 +13,16 @@ class Wine
     @wine_url = WINE_URL
   end
 
+  def scrape
+
+    html = Nokogiri::HTML(open(wine_url))
+    binding.pry
+
+    
+
+  end
+
 
 end
+
+Wine.new.scrape
