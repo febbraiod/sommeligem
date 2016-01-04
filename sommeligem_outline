@@ -1,0 +1,27 @@
+TopWinesGem or SomGem
+
+
+It scrapes the Wine Spectator (http://2015.top100.winespectator.com/lists/) site for the info needed to perform the following:
+
+It displays all the different wines on the list in order from 1 - 100.
+
+It isolates the name from the grape.
+
+The user can choose more info on any of the wines 1 – 100 (be careful some years there are ties..you will have to be clear about...   64.  Rank: 64,  65. Rank: 64 ...when it comes to user input.)
+                
+choosing a wine will provide a desciption, price, rating and vintage.
+
+Alternatively the user can choose the pairing option where they can pare down the list by a food group.  Say if
+they choose "red meat" or "Beef" The list will redisplay with the wines that match the varietal I associate it with.
+
+BONUS:  Can they then select from that pared down list for details? Also, hypothetically, we could add the list for different years.(might be able to do this simply by changing the year in the URL.
+
+Don => Draw out a Hash?, array? hashes? that will help:
+
+{}
+
+[{:rank => 2, :name => "Black Box", :varietal => "Red Blend" :details => [price, rating, vinatge]},{}]
+
+[{:rank => 2, :name => "Black Box", :varietal => "Red Blend" :details => {:price => $5, :rating => 80, :vinatage => 2014}},{}]
+
+[{:rank => 2, :name => "Black Box", :varietal => "Red Blend", :price => $5, :rating => 80, :vinatage => 2014},{}]
