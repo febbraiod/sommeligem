@@ -1,5 +1,6 @@
 require 'nokogiri'
 require 'open-uri'
+require 'launchy'
 
 
 class Wine
@@ -31,7 +32,7 @@ class Wine
       wine_hash = {}
       wine_hash[:ranking] = idx
       wine_hash[:name] = wine.text
-      wine_hash[:detail_link] = wine.attribute("href").value
+      wine_hash[:detail_link] = "wine.com" + wine.attribute("href").value
       @@wines << wine_hash
       idx += 1 #for ranking
     end
@@ -72,7 +73,6 @@ class Wine
 
 end
 
-puts(Wine.new.scrape)
 
 
 

@@ -12,6 +12,10 @@ choosing a wine will provide a description(might have to just provide a link as 
 Alternatively the user can choose the pairing option where they can pare down the list by a food group.  Say if they choose "red meat" or "Beef" The list will redisplay with the wines that match the varietal I associate it with.
 
 
+
+
+
+
 Don => Draw out a Hash?, array? hashes? that will help:
 
 {}
