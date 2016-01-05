@@ -29,9 +29,32 @@ class Som_cli
   def wine_list
     list = wine.scrape
     puts "For tonight's wine list we have:"
+    sleep(1)
 
     list.each do |bottle|
       puts "#{bottle[:ranking]}. #{bottle[:name]} from #{bottle[:region]}"
+      sleep(1/8.to_f)
+    end
+  end
+
+  def interface
+    puts ""
+    puts "How many I assist you? If you are unfamilar with Sommeligem, please enter 'help'."
+    
+    guest_choice = gets.chomp
+    if guest_choice.downcase == 'help'
+      puts ""
+      sleep(1.to_f)
+      puts "You may choose a number 1-100 for more details on the wine of your choice."
+      sleep(3/2.to_f)
+      puts "You may also repeat this list by typing 'list'."
+      sleep(3/2.to_f)
+      puts "Or if you'd like, I could suggest wines from our list to pair with your meal this evening by typing 'pairing'."
+      sleep(2.to_f)
+      puts "If you no longer need my assitance you may type 'exit.'"
+      puts ""
+      sleep(3/4.to_f)
+      interface
     end
 
     #Launchy.open("details link")
@@ -49,3 +72,4 @@ end
 a = Som_cli.new(Wine.new)
 
 a.wine_list
+a.interface
