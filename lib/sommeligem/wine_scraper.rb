@@ -44,7 +44,7 @@ class Wine
       elsif price.css(".salesPrice").text != ""
         @@wines[idx2][:price] = price.css(".salesPrice").text
       else
-        @@wines[idx2][:price] = "We're sorry. Price not available for this wine. Please check the detail link for more information."
+        @@wines[idx2][:price] = "Price not available"
       end
       idx2 += 1
     end

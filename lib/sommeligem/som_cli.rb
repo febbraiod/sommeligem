@@ -74,12 +74,39 @@ class Som_cli
   def details(user_input)
     wine = user_input.to_i - 1
     puts "A very fine selection, the #{list[wine][:name]}"
+    puts "The #{list[wine][:name]} is a #{list[wine][:varietal]} from #{list[wine][:region]}"
+    puts "It will pair well with #insert pairing method here"
+
+    if list[wine][:price] == "Price not available"
+      puts "I'm sorry to inform you that the price on the #{list[wine][:name]} is not available. Please check the details link for more information."
+    else
+      puts "The cost of this bottle will be #{list[wine][:price]}"
+    end
+
+    puts "Would you like more information?"
+
+    response = gets.chomp
+
+    while true
+      if response.downcase == "yes" || response.downcase == "y"
+        Launchy.open("#{list[wine][:detail_link]}")
+        interface
+        break
+      elsif response.downcase == "no" || response.downcase == "n"
+        interface
+        break
+      else
+        puts "Im sorry I do not understand your request, please try again"
+        response = gets.chomp
+      end
+    end
+
 
 
 
   end
 
-    #Launchy.open("details link")
+   
 
 
 
