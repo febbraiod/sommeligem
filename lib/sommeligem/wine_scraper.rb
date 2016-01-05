@@ -22,8 +22,8 @@ class Wine
     
     names_and_links = doc.css(".listProductName")
     prices = html.css(".priceBoxHeader")
-    varietals = doc.css(".productAbstract").css("[href]")
-    regions = doc.css(".productAbstract").css("span + span [href]").first.text
+    regions = doc.css(".productAbstract").css("span + span [href]")
+    varietals = doc.css("div.productAbstract").css("span:first-child [href]")
 
 
 
@@ -50,25 +50,30 @@ class Wine
       idx2 += 1
     end
 
-    binding.pry
-
     idx3 = 0
-    varietals.each do |grape|
-      @@wines[idx3][:varietal] = grape.text
+    regions.each do |region|
+      @@wines[idx3][:region] = region.text
       idx3 += 1
-      binding.pry
+    end
+    
+    idx4 = 0
+    varietals.each do |grape|
+
+      @@wines[idx4][:varietal] = grape.text.chomp("s")
+      idx4 += 1
     end
 
+    @@wines
   end
 
 
   def self.all
-      @@wines
+    @@wines
   end
 
 end
 
-Wine.new.scrape
+puts(Wine.new.scrape)
 
 =begin
 [:2 => {:name => "Black Box", :varietal => "Red Blend",
