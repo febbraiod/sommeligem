@@ -4,10 +4,11 @@ require_relative './wine_scraper.rb'
 
 class Som_cli
 
-  attr_accessor :wine
+  attr_accessor :wine, :list
 
   def initialize(wine)
     @wine = wine
+    @list = wine.scrape
   end
 
 
@@ -27,7 +28,6 @@ class Som_cli
   end
 
   def wine_list
-    list = wine.scrape
     puts "For tonight's wine list we have:"
     sleep(1)
 
@@ -56,9 +56,9 @@ class Som_cli
         sleep(3/4.to_f)
         interface
       elsif (1..100).include?(guest_choice.to_i)
-        #write details method and call it here
+        details(guest_choice)
       elsif guest_choice.downcase == 'list'
-        self.wine_list
+        wine_list
         interface
       elsif guest_choice.downcase == 'pairing'
         #write pairing method and call it here
@@ -66,17 +66,21 @@ class Som_cli
         puts "Please come again!"
         return 
       else
-        puts "Im sorry I do not understand you request, please try again"
+        puts "Im sorry I do not understand your request, please try again"
         interface
       end
   end
 
-    #Launchy.open("details link")
-
+  def details(user_input)
+    wine = user_input.to_i - 1
+    puts "A very fine selection, the #{list[wine][:name]}"
 
 
 
   end
+
+    #Launchy.open("details link")
+
 
 
 
