@@ -120,14 +120,14 @@ class Som_cli
       Sangiovese =>  Lasagna, Pizza, Tomatos, Tomato sauce, any acidic italian dishes
       RosÃ => grilled cheese, aparagus, cheese souflet, goat cheese, roasted beets, summer salads
       Syrah/Shiraz => Lamb chops, sausages, steak, spicy chicken dishes, paella, barbecued meats, and venison
-      Zinfandel
-      Chenin Blanc
-      Grenache
-      Muscat
-      Other White Blend
-      Petite Sirah
-      Riesling
-      Vintage Sparkling Wine
+      Zinfandel => Indian food, chocolate, duck, chili, curry pork, hard cheese, bacon, and spicy BBQ
+      Chenin Blanc => Sweet and Sour chicken or pork, soft cheeses, smoked fish, and fowl
+      Grenache => skrit steak, charcuterrie, Stuffed Mushrooms, young hard cheese, dark chocolate, stews, braises and ratatouille
+      Muscat => blue cheese, Melon and prosciutto, fresh fruit, dried fruit, desserts
+      Other White Blend => mild to strong cheese, poultry, seafood
+      Petite Sirah => Roasted or Grill Beef and Pork, Lamb, Barbeque, hard and strong cheeses, mexican food
+      Riesling => risotto, grilled fish, nigiri sushi, spicy dishes, mexican, indian, chinese
+      Vintage Sparkling Wine => salty foods, oysters, chinese food, smoked fish, and lean fish
 =end
   end
    
