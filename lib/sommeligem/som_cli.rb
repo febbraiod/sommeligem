@@ -31,6 +31,7 @@ class Som_cli
     puts "For tonight's wine list we have:"
     sleep(1)
 
+
     list.each do |bottle|
       puts "#{bottle[:ranking]}. #{bottle[:name]} from #{bottle[:region]}"
       sleep(1/8.to_f)
@@ -39,7 +40,7 @@ class Som_cli
 
   def interface
     puts ""
-    puts "How many I assist you? If you are unfamilar with Sommeligem, please enter 'help'."
+    puts "How may I assist you? If you are unfamiliar with Sommeligem, please ask for 'help'."
     
     guest_choice = gets.chomp
       if guest_choice.downcase == 'help'
@@ -101,11 +102,34 @@ class Som_cli
       end
     end
 
-
-
-
   end
 
+  def pairings
+=begin      
+      Cabernet Sauvignon => Red meats, especially short ribs and rare steaks. Mushroom sauces. Also goes with strong cheese and lamb.
+      Other Red Blend => Roasted white meats, Hamburger, veal, risotto
+      Chardonnay => fatty fish or fish in a rich sauce, ripe fruit, hard cheeses, sushi rolls, with mayo
+      Non-Vintage Sparkling Wine => salty foods, oysters, chinese food, smoked fish, and lean fish
+      Sauvignon Blanc => lean fish, nigiri sushi, fresh fruit, light cheese
+      Malbec => Steak, Roast beef or venison, Barbecued lamb, beef or pork with smokey, chilli-based rubs, Chili con Carne     
+      Pinot Noir => Glazed ham, pork tenderloin, roasted vegatables, poutry and fowl, duck, rabbit, and dishes with light flavorful sauses.
+      Tempranillo => Cured ham, tapas, rabbit, Lasagna, Pizza and dishes with tomato-based sauces, tacos, nachos, mole sauces
+      Bordeaux Red Blend => braised lamb, mussels, quiche, beef stew and smoked duck
+      Pinot Gris/Grigio => fatty fish, tuna, salmon, Shellfish, light chicken dishes, pasta with light sauces or olive oil and fresh herbs, mild Asian dishes
+      Rhone Red Blend = pizza, pork belly, sausages, charcuterrie, stir fry, and pork chops
+      Sangiovese =>  Lasagna, Pizza, Tomatos, Tomato sauce, any acidic italian dishes
+      RosÃ => grilled cheese, aparagus, cheese souflet, goat cheese, roasted beets, summer salads
+      Syrah/Shiraz => Lamb chops, sausages, steak, spicy chicken dishes, paella, barbecued meats, and venison
+      Zinfandel
+      Chenin Blanc
+      Grenache
+      Muscat
+      Other White Blend
+      Petite Sirah
+      Riesling
+      Vintage Sparkling Wine
+=end
+  end
    
 
 
@@ -116,5 +140,6 @@ end
 
 a = Som_cli.new(Wine.new)
 
+a.welcome
 a.wine_list
 a.interface
