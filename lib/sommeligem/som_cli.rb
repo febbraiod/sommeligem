@@ -104,32 +104,73 @@ class Som_cli
 
   end
 
-  def pairings
+  def pairings 
+
+=begin
+  I wonder if this should be done with a Food class, 
+  where foods belong to wines and vice versa, 
+  but i'm not sure how I'd get all this info assigned properly. 
+  Ask at assestment
+=end
+
 =begin      
-      Cabernet Sauvignon => Red meats, especially short ribs and rare steaks. Mushroom sauces. Also goes with strong cheese and lamb.
+      wine to food => 
+      {Cabernet Sauvignon => Red meats, especially short ribs and rare steaks. Mushroom sauces. Also goes with strong cheese and lamb.
       Other Red Blend => Roasted white meats, Hamburger, veal, risotto
-      Chardonnay => fatty fish or fish in a rich sauce, ripe fruit, hard cheeses, sushi rolls, with mayo
+      Chardonnay => fatty fish or fish in a rich sauce, lobster, ripe fruit, hard cheeses, sushi rolls, with mayo
       Non-Vintage Sparkling Wine => salty foods, oysters, chinese food, smoked fish, and lean fish
-      Sauvignon Blanc => lean fish, nigiri sushi, fresh fruit, light cheese
+      Sauvignon Blanc => lean fish, nigiri sushi, lobster fresh fruit, light cheese
       Malbec => Steak, Roast beef or venison, Barbecued lamb, beef or pork with smokey, chilli-based rubs, Chili con Carne     
       Pinot Noir => Glazed ham, pork tenderloin, roasted vegatables, poutry and fowl, duck, rabbit, and dishes with light flavorful sauses.
       Tempranillo => Cured ham, tapas, rabbit, Lasagna, Pizza and dishes with tomato-based sauces, tacos, nachos, mole sauces
       Bordeaux Red Blend => braised lamb, mussels, quiche, beef stew and smoked duck
-      Pinot Gris/Grigio => fatty fish, tuna, salmon, Shellfish, light chicken dishes, pasta with light sauces or olive oil and fresh herbs, mild Asian dishes
+      Pinot Gris/Grigio => fatty fish, tuna, salmon, shellfish, lobster, light chicken dishes, pasta with light sauces or olive oil and fresh herbs, mild Asian dishes
       Rhone Red Blend = pizza, pork belly, sausages, charcuterrie, stir fry, and pork chops
       Sangiovese =>  Lasagna, Pizza, Tomatos, Tomato sauce, any acidic italian dishes
-      RosÃ => grilled cheese, aparagus, cheese souflet, goat cheese, roasted beets, summer salads
+      RosÃ => grilled cheese, aparagus, cheese souflet, goat cheese, lobster, roasted beets, summer salads
       Syrah/Shiraz => Lamb chops, sausages, steak, spicy chicken dishes, paella, barbecued meats, and venison
       Zinfandel => Indian food, chocolate, duck, chili, curry pork, hard cheese, bacon, and spicy BBQ
-      Chenin Blanc => Sweet and Sour chicken or pork, soft cheeses, smoked fish, and fowl
+      Chenin Blanc => Sweet and Sour chicken or pork(chinese), soft cheeses, smoked fish, and fowl
       Grenache => skrit steak, charcuterrie, Stuffed Mushrooms, young hard cheese, dark chocolate, stews, braises and ratatouille
       Muscat => blue cheese, Melon and prosciutto, fresh fruit, dried fruit, desserts
       Other White Blend => mild to strong cheese, poultry, seafood
       Petite Sirah => Roasted or Grill Beef and Pork, Lamb, Barbeque, hard and strong cheeses, mexican food
       Riesling => risotto, grilled fish, nigiri sushi, spicy dishes, mexican, indian, chinese
-      Vintage Sparkling Wine => salty foods, oysters, chinese food, smoked fish, and lean fish
+      Vintage Sparkling Wine => salty foods, oysters, chinese food, smoked fish, and lean fish}
+
+      food to wine => 
+      { Beef => [Cabernet Sauvignon, Other Red Blend, Malbec, Bordeaux Red Blend, Syrah/Shiraz, Grenache, Petite Sirah]
+        Chicken => [Pinot Gris/Grigio, Syrah/Shiraz, Chenin Blanc, Other Red Blend]
+        Pork => [Malbec, Pinot Noir, Zinfandel, Petite Sirah, Other Red Blend, Tempranillo]
+        Veggies
+        Fruit
+        BBQ
+        Mexican
+        Indian
+        Chinese
+        Roasted
+        Hard cheese
+        Soft Cheese
+        dessert
+        Italian => Are you having pizza?
+        fatty fish
+        lean fish
+        sushi => rolls or nigiri?
+        risotto
+        lamb
+        duck
+        poultry
+        fowl
+        venison
+        other seafood
+        spicy
+        salty
+        sweet
+      }
+
 =end
   end
+
    
 
 
