@@ -9,6 +9,39 @@ class Som_cli
   def initialize(wine)
     @wine = wine
     @list = wine.scrape
+    self.add_foods
+  end
+
+  def add_foods
+    food_pairs = {"Cabernet Sauvignon" => "red meats, especially short ribs and rare steaks, and dishes with mushroom sauces. It also goes well with strong cheese and lamb.",
+      "Other Red Blend" => "roasted white meats, hamburger, veal, or risotto",
+      "Chardonnay" => "fatty fish or lean fish in a rich sauce, lobster, sushi rolls with mayo, ripe fruit and hard cheeses",
+      "Non-Vintage Sparkling Wine" => "salty foods, oysters, chinese food, smoked fish and lean fish",
+      "Sauvignon Blanc" => "lean fish, nigiri sushi, lobster, fresh fruits and veggies or light cheeses",
+      "Malbec" => "steak, roast beef or venison, barbecued lamb, beef or pork with smokey, chili-based rubs. Also goes nicely with Chili con Carne",     
+      "Pinot Noir" => "glazed ham, pork tenderloin, roasted vegatables, poutry and fowl, duck, rabbit, and dishes with light flavorful sauces",
+      "Tempranillo" => "cured ham, tapas, rabbit, Lasagna, Pizza and dishes with tomato-based sauces, tacos, nachos, mole sauces",
+      "Bordeaux Red Blend" => "braised lamb, mussels, quiche, beef stew and smoked duck",
+      "Pinot Gris/Grigio" => "fatty fish, tuna, salmon, shellfish, lobster, light chicken dishes, fresh veggies, pasta with light sauces or olive oil and fresh herbs, as well as mild Asian dishes",
+      "Rhone Red Blend" => "pizza, pork belly, sausages, charcuterrie, stir fry, and pork chops",
+      "Sangiovese" => "lasagna, pizza, tomatos, tomato sauce, any acidic Italian dish",
+      "RosÃ" => "artisinal grilled cheese sandwiches, aparagus, cheese souflet, goat cheese, lobster, roasted beets and summer salads",
+      "Syrah/Shiraz" => "lamb chops, sausages, steak, spicy chicken dishes, paella, barbecued meats, and venison",
+      "Zinfandel" => "Indian food especially curries, chocolate, duck, chili, pork, hard cheese, bacon, and spicy BBQ",
+      "Chenin Blanc" => "sweet and sour chicken or pork, most Chinese foods, soft cheeses, smoked fish, fowl and fresh veggies",
+      "Grenache" => "skirt steak, charcuterrie, stuffed mushrooms, young hard cheese, dark chocolate, stews, braises and ratatouille",
+      "Muscat" => "blue cheese, melon with prosciutto, fresh fruit, dried fruit, desserts",
+      "Other White Blend" => "mild to strong cheese, chicken, seafood, fresh veggies",
+      "Petite Sirah" => "roasted or grill beef and pork, lamb, barbeque, hard and strong cheeses, Mexican food",
+      "Riesling" => "risotto, grilled fish, nigiri sushi, spicy dishes, Mexican, Indian, Chinese foods",
+      "Vintage Sparkling Wine" => "salty foods, oysters, chinese food, smoked fish, and lean fish"}
+
+     
+      list.each do |wine|
+        wine[:pairing] = food_pairs[wine[:varietal]]
+      end
+
+    list  
   end
 
 
@@ -27,28 +60,36 @@ class Som_cli
     puts ""
   end
 
-  def wine_list
-    puts "For tonight's wine list we have:"
-    sleep(1)
+  def wine_list #should only happen at request
 
+    puts ""
+    puts "Would you like to see the wine list?"
+    response = gets.chomp.downcase
 
-    list.each do |bottle|
-      puts "#{bottle[:ranking]}. #{bottle[:name]} from #{bottle[:region]}"
-      sleep(1/8.to_f)
-    end
+      if response == "yes" || response == "y"
+        puts "For tonight's wine list we have:"
+        sleep(1)
+
+        list.each do |bottle|
+          puts "#{bottle[:ranking]}. #{bottle[:name]} from #{bottle[:region]}"
+          sleep(1/8.to_f)
+        end
+      end
+  
   end
 
   def interface
+
     puts ""
     puts "How may I assist you? If you are unfamiliar with Sommeligem, please ask for 'help'."
-    
+
     guest_choice = gets.chomp
       if guest_choice.downcase == 'help'
         puts ""
         sleep(1.to_f)
         puts "You may choose a number 1-100 for more details on the wine of your choice."
         sleep(3/2.to_f)
-        puts "You may also repeat this list by typing 'list'."
+        puts "You may ask to see the wine list by typing 'list'."
         sleep(3/2.to_f)
         puts "Or if you'd like, I could suggest wines from our list to pair with your meal this evening by typing 'pairing'."
         sleep(2.to_f)
@@ -63,6 +104,7 @@ class Som_cli
         interface
       elsif guest_choice.downcase == 'pairing'
         #write pairing method and call it here
+        details(guest_choice)
       elsif guest_choice.downcase == 'exit'
         puts "Please come again!"
         return 
@@ -70,13 +112,14 @@ class Som_cli
         puts "Im sorry I do not understand your request, please try again"
         interface
       end
+
   end
 
   def details(user_input)
     wine = user_input.to_i - 1
     puts "A very fine selection, the #{list[wine][:name]}"
     puts "The #{list[wine][:name]} is a #{list[wine][:varietal]} from #{list[wine][:region]}"
-    puts "It will pair well with #insert pairing method here"
+    puts "This wine will pair well with #{list[wine][:pairing]}."
 
     if list[wine][:price] == "Price not available"
       puts "I'm sorry to inform you that the price on the #{list[wine][:name]} is not available. Please check the details link for more information."
@@ -104,71 +147,63 @@ class Som_cli
 
   end
 
-  def pairings 
-
 =begin
   I wonder if this should be done with a Food class, 
   where foods belong to wines and vice versa, 
   but i'm not sure how I'd get all this info assigned properly. 
-  Ask at assestment
+  Ask at assessment
 =end
 
-=begin      
-      wine to food => 
-      {Cabernet Sauvignon => Red meats, especially short ribs and rare steaks. Mushroom sauces. Also goes with strong cheese and lamb.
-      Other Red Blend => Roasted white meats, Hamburger, veal, risotto
-      Chardonnay => fatty fish or fish in a rich sauce, lobster, ripe fruit, hard cheeses, sushi rolls, with mayo
-      Non-Vintage Sparkling Wine => salty foods, oysters, chinese food, smoked fish, and lean fish
-      Sauvignon Blanc => lean fish, nigiri sushi, lobster fresh fruit, light cheese
-      Malbec => Steak, Roast beef or venison, Barbecued lamb, beef or pork with smokey, chilli-based rubs, Chili con Carne     
-      Pinot Noir => Glazed ham, pork tenderloin, roasted vegatables, poutry and fowl, duck, rabbit, and dishes with light flavorful sauses.
-      Tempranillo => Cured ham, tapas, rabbit, Lasagna, Pizza and dishes with tomato-based sauces, tacos, nachos, mole sauces
-      Bordeaux Red Blend => braised lamb, mussels, quiche, beef stew and smoked duck
-      Pinot Gris/Grigio => fatty fish, tuna, salmon, shellfish, lobster, light chicken dishes, pasta with light sauces or olive oil and fresh herbs, mild Asian dishes
-      Rhone Red Blend = pizza, pork belly, sausages, charcuterrie, stir fry, and pork chops
-      Sangiovese =>  Lasagna, Pizza, Tomatos, Tomato sauce, any acidic italian dishes
-      RosÃ => grilled cheese, aparagus, cheese souflet, goat cheese, lobster, roasted beets, summer salads
-      Syrah/Shiraz => Lamb chops, sausages, steak, spicy chicken dishes, paella, barbecued meats, and venison
-      Zinfandel => Indian food, chocolate, duck, chili, curry pork, hard cheese, bacon, and spicy BBQ
-      Chenin Blanc => Sweet and Sour chicken or pork(chinese), soft cheeses, smoked fish, and fowl
-      Grenache => skrit steak, charcuterrie, Stuffed Mushrooms, young hard cheese, dark chocolate, stews, braises and ratatouille
-      Muscat => blue cheese, Melon and prosciutto, fresh fruit, dried fruit, desserts
-      Other White Blend => mild to strong cheese, poultry, seafood
-      Petite Sirah => Roasted or Grill Beef and Pork, Lamb, Barbeque, hard and strong cheeses, mexican food
-      Riesling => risotto, grilled fish, nigiri sushi, spicy dishes, mexican, indian, chinese
-      Vintage Sparkling Wine => salty foods, oysters, chinese food, smoked fish, and lean fish}
-
-      food to wine => 
-      { Beef => [Cabernet Sauvignon, Other Red Blend, Malbec, Bordeaux Red Blend, Syrah/Shiraz, Grenache, Petite Sirah]
-        Chicken => [Pinot Gris/Grigio, Syrah/Shiraz, Chenin Blanc, Other Red Blend]
-        Pork => [Malbec, Pinot Noir, Zinfandel, Petite Sirah, Other Red Blend, Tempranillo]
-        Veggies
-        Fruit
-        BBQ
-        Mexican
-        Indian
-        Chinese
-        Roasted
-        Hard cheese
-        Soft Cheese
-        dessert
-        Italian => Are you having pizza?
-        fatty fish
-        lean fish
-        sushi => rolls or nigiri?
-        risotto
-        lamb
-        duck
-        poultry
-        fowl
-        venison
-        other seafood
-        spicy
-        salty
-        sweet
+  def pairing_food_to_wine
+=begin
+    FOOD_PAIRING HASH = 
+      {beef => [Cabernet Sauvignon, Other Red Blend, Malbec, Bordeaux Red Blend, Syrah/Shiraz, Grenache, Petite Sirah]
+        chicken => [Pinot Gris/Grigio, Syrah/Shiraz, Chenin Blanc, Other Red Blend, Other White Blend]
+        pork => [Malbec, Pinot Noir, Zinfandel, Petite Sirah, Other Red Blend, Tempranillo]
+        veggies => [Pinot Noir, Other White Blend, Pinot Gris/Grigio, Chenin Blanc, Sauvignon Blanc, RosÃ]
+        fruit => [Chardonnay, Sauvignon Blanc, Muscat]
+        bbq => [Zinfandel, Malbec, Syrah/Shiraz, Petite Sirah]
+        mexican => [Petite Sirah, Riesling, Syrah/Shiraz, Tempranillo]
+        indian => [Riesling, Zinfandel]
+        chinese => [Non-Vintage Sparkling Wine, Chenin Blanc, Riesling, Vintage Sparkling Wine]
+        roasted =>  [Other Red Blend, Malbec, RosÃ, Petite Sirah, Sangiovese]
+        hard cheese => [Chardonnay, Zinfandel, Grenache, Petite Sirah, Rhone Red Blend, Grenache]
+        soft cheese => [Chenin Blanc, Rhone Red Blend, Grenache]
+        dessert/sweets => [Muscat, Zinfandel, Grenache]
+        italian => {pizza => [Tempranillo, Rhone Red Blend, Sangiovese], other_italian => [Sangiovese, Other Red Blend]}
+        fatty fish => [Chardonnay, Pinot Gris/Grigio]
+        lean fish => [Sauvignon Blanc, Non-Vintage Sparkling Wine, Vintage Sparkling Wine, Riesling]
+        sushi => {rolls => [Chardonnay], nigiri => [Sauvignon Blanc, Riesling]}
+        lamb => [Malbec, Bordeaux Red Blend, Syrah/Shiraz, Petite Sirah]
+        duck => [Pinot Noir, Zinfandel, Bordeaux Red Blend]
+        fowl => [Pinot Noir, Chenin Blanc]
+        venison => [Malbec, Syrah/Shiraz]
+        other seafood(lobster, shellfish ect) => [Vintage Sparkling Wine, Non-Vintage Sparkling Wine, Chardonnay, Sauvignon Blanc, Pinot Gris/Grigio, RosÃ, Bordeaux Red Blend]
+        spicy => [Syrah/Shiraz, Zinfandel, Riesling]
+        salty => [Non-Vintage Sparkling Wine, Vintage Sparkling Wine]
       }
+=end      
+    input = gets.chomp.downcase
 
+    list.each do |bottle|
+      if food_and_wine[input].include?(bottle[:varietal])
+        puts "#{bottle[:ranking]}. #{bottle[:name]} from #{bottle[:region]}"
+        sleep(1/8.to_f)
+      end
+    end
+end
+
+
+
+
+
+  def pairing_wine_to_food
+=begin      
+
+    how can I take this hash and add it to the @list, so I can call it with string interpolation
+      
 =end
+
   end
 
    
@@ -180,7 +215,5 @@ end
 
 
 a = Som_cli.new(Wine.new)
-
 a.welcome
-a.wine_list
 a.interface
