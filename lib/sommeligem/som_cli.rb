@@ -155,55 +155,47 @@ class Som_cli
 =end
 
   def pairing_food_to_wine
-=begin
-    FOOD_PAIRING HASH = 
-      {beef => [Cabernet Sauvignon, Other Red Blend, Malbec, Bordeaux Red Blend, Syrah/Shiraz, Grenache, Petite Sirah]
-        chicken => [Pinot Gris/Grigio, Syrah/Shiraz, Chenin Blanc, Other Red Blend, Other White Blend]
-        pork => [Malbec, Pinot Noir, Zinfandel, Petite Sirah, Other Red Blend, Tempranillo]
-        veggies => [Pinot Noir, Other White Blend, Pinot Gris/Grigio, Chenin Blanc, Sauvignon Blanc, RosÃ]
-        fruit => [Chardonnay, Sauvignon Blanc, Muscat]
-        bbq => [Zinfandel, Malbec, Syrah/Shiraz, Petite Sirah]
-        mexican => [Petite Sirah, Riesling, Syrah/Shiraz, Tempranillo]
-        indian => [Riesling, Zinfandel]
-        chinese => [Non-Vintage Sparkling Wine, Chenin Blanc, Riesling, Vintage Sparkling Wine]
-        roasted =>  [Other Red Blend, Malbec, RosÃ, Petite Sirah, Sangiovese]
-        hard cheese => [Chardonnay, Zinfandel, Grenache, Petite Sirah, Rhone Red Blend, Grenache]
-        soft cheese => [Chenin Blanc, Rhone Red Blend, Grenache]
-        dessert/sweets => [Muscat, Zinfandel, Grenache]
-        italian => {pizza => [Tempranillo, Rhone Red Blend, Sangiovese], other_italian => [Sangiovese, Other Red Blend]}
-        fatty fish => [Chardonnay, Pinot Gris/Grigio]
-        lean fish => [Sauvignon Blanc, Non-Vintage Sparkling Wine, Vintage Sparkling Wine, Riesling]
-        sushi => {rolls => [Chardonnay], nigiri => [Sauvignon Blanc, Riesling]}
-        lamb => [Malbec, Bordeaux Red Blend, Syrah/Shiraz, Petite Sirah]
-        duck => [Pinot Noir, Zinfandel, Bordeaux Red Blend]
-        fowl => [Pinot Noir, Chenin Blanc]
-        venison => [Malbec, Syrah/Shiraz]
-        other seafood(lobster, shellfish ect) => [Vintage Sparkling Wine, Non-Vintage Sparkling Wine, Chardonnay, Sauvignon Blanc, Pinot Gris/Grigio, RosÃ, Bordeaux Red Blend]
-        spicy => [Syrah/Shiraz, Zinfandel, Riesling]
-        salty => [Non-Vintage Sparkling Wine, Vintage Sparkling Wine]
+    food_to_wine = 
+      {"beef" => ["Cabernet Sauvignon", "Other Red Blend", "Malbec", "Bordeaux Red Blend", "Syrah/Shiraz", "Grenache", "Petite Sirah"],
+      "chicken" => ["Pinot Gris/Grigio", "Syrah/Shiraz", "Chenin Blanc", "Other Red Blend", "Other White Blend"],
+      "pork" => ["Malbec", "Pinot Noir", "Zinfandel", "Petite Sirah", "Other Red Blend", "Tempranillo"],
+      "veggies" => ["Pinot Noir", "Other White Blend", "Pinot Gris/Grigio", "Chenin Blanc", "Sauvignon Blanc", "RosÃ"],
+      "fruit" => ["Chardonnay", "Sauvignon Blanc", "Muscat"],
+      "bbq" => ["Zinfandel", "Malbec", "Syrah/Shiraz", "Petite Sirah"],
+      "mexican" => ["Petite Sirah", "Riesling", "Syrah/Shiraz", "Tempranillo"],
+      "indian" => ["Riesling", "Zinfandel"],
+      "chinese" => ["Non-Vintage Sparkling Wine", "Chenin Blanc", "Riesling", "Vintage Sparkling Wine"],
+      "roasted" =>  ["Other Red Blend", "Malbec", "RosÃ", "Petite Sirah", "Sangiovese"],
+      "hard cheese" => ["Chardonnay", "Zinfandel", "Grenache", "Petite Sirah", "Rhone Red Blend"],
+      "soft cheese" => ["Chenin Blanc", "Rhone Red Blend", "Grenache"],
+      "dessert" => ["Muscat", "Zinfandel", "Grenache"],
+      "sweets" => ["Muscat", "Zinfandel", "Grenache"],
+      "italian" => ["Sangiovese", "Other Red Blend"],
+      "pizza" => ["Tempranillo", "Rhone Red Blend", "Sangiovese"],
+      "fatty fish" => ["Chardonnay", "Pinot Gris/Grigio"],
+      "lean fish" => ["Sauvignon Blanc", "Non-Vintage Sparkling Wine", "Vintage Sparkling Wine", "Riesling"],
+      "sushi rolls" => ["Chardonnay"],
+      "nigiri sushi" => ["Sauvignon Blanc", "Riesling"],
+      "lamb" => ["Malbec", "Bordeaux Red Blend", "Syrah/Shiraz", "Petite Sirah"],
+      "duck" => ["Pinot Noir", "Zinfandel", "Bordeaux Red Blend"],
+      "fowl" => ["Pinot Noir", "Chenin Blanc"],
+      "venison" => ["Malbec", "Syrah/Shiraz"],
+      "other seafood" => ["Vintage Sparkling Wine", "Non-Vintage Sparkling Wine", "Chardonnay", "Sauvignon Blanc", "Pinot Gris/Grigio", "RosÃ", "Bordeaux Red Blend"],
+      "spicy" => ["Syrah/Shiraz", "Zinfandel", "Riesling"],
+      "salty" => ["Non-Vintage Sparkling Wine", "Vintage Sparkling Wine"]
       }
-=end      
+
+      # use in CLI not in hash(lobster, shellfish ect)
+   
     input = gets.chomp.downcase
 
     list.each do |bottle|
-      if food_and_wine[input].include?(bottle[:varietal])
+      if food_to_wine[input].include?(bottle[:varietal]) && input != "sushi"
         puts "#{bottle[:ranking]}. #{bottle[:name]} from #{bottle[:region]}"
         sleep(1/8.to_f)
       end
     end
-end
-
-
-
-
-
-  def pairing_wine_to_food
-=begin      
-
-    how can I take this hash and add it to the @list, so I can call it with string interpolation
-      
-=end
-
+  
   end
 
    
