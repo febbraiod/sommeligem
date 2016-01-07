@@ -152,8 +152,8 @@ class Som_cli
 =begin
   I wonder if this should be done with a Food class, 
   where foods belong to wines and vice versa, 
-  but i'm not sure how I'd get all this info assigned properly. 
-  Ask at assessment
+  but I'm not sure how I'd get all this info assigned properly. 
+  Ask at assessment.
 =end
 
   def pairing_food_to_wine
@@ -189,7 +189,7 @@ class Som_cli
       }
 
     while true
-      puts "what you eatin? for a list of foods i can pair please enter 'foods'" # use in CLI not in hash(lobster, shellfish ect)
+      puts "What are you considering for dinner? For a list of foods and flavors I can pair please enter 'foods'" # use in CLI not in hash(lobster, shellfish ect)
      
       input = gets.chomp.downcase
       if input == "foods"
@@ -218,7 +218,3 @@ class Som_cli
 
 end
 
-
-a = Som_cli.new(Wine.new)
-a.welcome
-a.interface

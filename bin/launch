@@ -1,0 +1,7 @@
+#!/usr/bin/env ruby
+
+require_relative '../lib/sommeligem.rb'
+
+a = Som_cli.new(Wine.new)
+a.welcome
+a.interface
