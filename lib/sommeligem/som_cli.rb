@@ -103,8 +103,10 @@ class Som_cli
         wine_list
         interface
       elsif guest_choice.downcase == 'pairing'
-        #write pairing method and call it here
-        details(guest_choice)
+        pairing_food_to_wine
+        puts "For more information on any of these wines please enter the wine number."
+        wine_num = gets.chomp
+        details(wine_num)
       elsif guest_choice.downcase == 'exit'
         puts "Please come again!"
         return 
@@ -180,22 +182,33 @@ class Som_cli
       "duck" => ["Pinot Noir", "Zinfandel", "Bordeaux Red Blend"],
       "fowl" => ["Pinot Noir", "Chenin Blanc"],
       "venison" => ["Malbec", "Syrah/Shiraz"],
-      "other seafood" => ["Vintage Sparkling Wine", "Non-Vintage Sparkling Wine", "Chardonnay", "Sauvignon Blanc", "Pinot Gris/Grigio", "RosÃ", "Bordeaux Red Blend"],
+      "lobster" => ["Vintage Sparkling Wine", "Non-Vintage Sparkling Wine", "Chardonnay", "Sauvignon Blanc", "Pinot Gris/Grigio", "RosÃ", "Bordeaux Red Blend"],
+      "shellfish" => ["Vintage Sparkling Wine", "Non-Vintage Sparkling Wine", "Chardonnay", "Sauvignon Blanc", "Pinot Gris/Grigio", "RosÃ", "Bordeaux Red Blend"],
       "spicy" => ["Syrah/Shiraz", "Zinfandel", "Riesling"],
       "salty" => ["Non-Vintage Sparkling Wine", "Vintage Sparkling Wine"]
       }
 
-      # use in CLI not in hash(lobster, shellfish ect)
-   
-    input = gets.chomp.downcase
-
-    list.each do |bottle|
-      if food_to_wine[input].include?(bottle[:varietal]) && input != "sushi"
-        puts "#{bottle[:ranking]}. #{bottle[:name]} from #{bottle[:region]}"
-        sleep(1/8.to_f)
+    while true
+      puts "what you eatin? for a list of foods i can pair please enter 'foods'" # use in CLI not in hash(lobster, shellfish ect)
+     
+      input = gets.chomp.downcase
+      if input == "foods"
+        food_to_wine.each do |food, wine|
+          puts food
+        end
+      elsif food_to_wine.has_key?(input)
+        list.each do |bottle|
+          if food_to_wine[input].include?(bottle[:varietal]) && input != "sushi"
+            puts "#{bottle[:ranking]}. #{bottle[:name]} from #{bottle[:region]}"
+            sleep(1/8.to_f)
+          end
+        end
+        break  
+      else
+        puts "I'm sorry I'm not familar with that dish."
       end
     end
-  
+
   end
 
    
