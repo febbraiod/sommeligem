@@ -13,7 +13,7 @@ class Som_cli
   end
 
   def add_foods
-    food_pairs = {"Cabernet Sauvignon" => "red meats, especially short ribs and rare steaks, and dishes with mushroom sauces. It also goes well with strong cheese and lamb.",
+    food_pairs = {"Cabernet Sauvignon" => "red meats, especially short ribs and rare steaks, and dishes with mushroom sauces. It also goes well with strong cheese and lamb",
       "Other Red Blend" => "roasted white meats, hamburger, veal, or risotto",
       "Chardonnay" => "fatty fish or lean fish in a rich sauce, lobster, sushi rolls with mayo, ripe fruit and hard cheeses",
       "Non-Vintage Sparkling Wine" => "salty foods, oysters, chinese food, smoked fish and lean fish",
@@ -63,7 +63,7 @@ class Som_cli
   def wine_list #should only happen at request
 
     puts ""
-    puts "Would you like to see the wine list?"
+    puts "You like to see the wine list?"
     response = gets.chomp.downcase
 
       if response == "yes" || response == "y"
@@ -87,25 +87,35 @@ class Som_cli
       if guest_choice.downcase == 'help'
         puts ""
         sleep(1.to_f)
-        puts "You may choose a number 1-100 for more details on the wine of your choice."
-        sleep(3/2.to_f)
         puts "You may ask to see the wine list by typing 'list'."
         sleep(3/2.to_f)
-        puts "Or if you'd like, I could suggest wines from our list to pair with your meal this evening by typing 'pairing'."
+        puts "You may choose a number 1-100 for more details on the corresponding wine of your choice."
+        sleep(3/2.to_f)
+        puts "Or if you'd like, I could suggest wines from our list to pair with your meal by typing 'pairing'."
         sleep(2.to_f)
-        puts "If you no longer need my assitance you may type 'exit.'"
+        puts "If you no longer need my assistance you may type 'exit.'"
         puts ""
         sleep(3/4.to_f)
         interface
       elsif (1..100).include?(guest_choice.to_i)
-        details(guest_choice)
+        if details(guest_choice) == exit
+          puts "Have a good evening!"
+          return
+        end
       elsif guest_choice.downcase == 'list'
         wine_list
         interface
       elsif guest_choice.downcase == 'pairing'
-        pairing_food_to_wine
+        if pairing_food_to_wine == "exit"
+          puts "Have a nice night!"
+          return
+        end
         puts "For more information on any of these wines please enter the wine number."
         wine_num = gets.chomp
+        if wine_num == "exit"
+          puts "Have a nice night!"
+          return
+        end
         details(wine_num)
       elsif guest_choice.downcase == 'exit'
         puts "Please come again!"
@@ -141,6 +151,9 @@ class Som_cli
       elsif response.downcase == "no" || response.downcase == "n"
         interface
         break
+      elsif response.downcase == "exit"
+        puts "Good Evening."
+        return
       else
         puts "Im sorry I do not understand your request, please try again"
         response = gets.chomp
@@ -196,6 +209,8 @@ class Som_cli
         food_to_wine.each do |food, wine|
           puts food
         end
+      elsif input == "exit"
+        return "exit"
       elsif food_to_wine.has_key?(input)
         list.each do |bottle|
           if food_to_wine[input].include?(bottle[:varietal]) && input != "sushi"
