@@ -1,4 +1,3 @@
-require 'pry'
 require 'launchy'
 require_relative './wine_scraper.rb'
 
