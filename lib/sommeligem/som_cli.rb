@@ -62,7 +62,7 @@ class Som_cli
   def wine_list #should only happen at request
 
     puts ""
-    puts "You like to see the wine list?"
+    puts "You would like to see the wine list?"
     response = gets.chomp.downcase
 
       if response == "yes" || response == "y"
