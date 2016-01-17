@@ -1,7 +1,6 @@
 #!/usr/bin/env ruby
 
-require_relative '../lib/sommeligem.rb'
+require "bundler/setup"
+require "sommeligem"
 
-a = Som_cli.new(Wine.new)
-a.welcome
-a.interface
+Som_cli.new.call
